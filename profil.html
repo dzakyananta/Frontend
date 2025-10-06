@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil - Pendaftaran Mahasiswa Baru</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h3>UNIVERSITAS INDONESIA</h3>
+            </div>
+            <div class="nav-menu">
+                <a href="beranda.html" class="nav-link">Beranda</a>
+                <a href="#" class="nav-link active">Profil</a>
+                <a href="status.html" class="nav-link">Status Pendaftaran</a>
+                <a href="index.html" class="nav-link logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <h1>Profil Mahasiswa</h1>
+            <p>Kelola informasi pribadi dan akademik Anda</p>
+        </div>
+
+        <div class="profile-content">
+            <div class="profile-sidebar">
+                <div class="profile-photo">
+                    <div class="photo-placeholder">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <button class="upload-btn">Upload Foto</button>
+                </div>
+                
+                <div class="profile-menu">
+                    <button class="menu-item active" onclick="showSection('personal')">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        Data Pribadi
+                    </button>
+                    <button class="menu-item" onclick="showSection('academic')">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                        Data Akademik
+                    </button>
+                    <button class="menu-item" onclick="showSection('documents')">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14,2 14,8 20,8"></polyline>
+                        </svg>
+                        Dokumen
+                    </button>
+                    <button class="menu-item" onclick="showSection('security')">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <circle cx="12" cy="16" r="1"></circle>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                        Keamanan
+                    </button>
+                </div>
+            </div>
+
+            <div class="profile-main">
+                <!-- Data Pribadi Section -->
+                <div id="personal-section" class="profile-section active">
+                    <div class="section-header">
+                        <h2>Data Pribadi</h2>
+                        <button class="edit-btn" onclick="toggleEdit('personal')">Edit</button>
+                    </div>
+                    
+                    <form class="profile-form">
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label for="nama">Nama Lengkap</label>
+                                <input type="text" id="nama" value="Ahmad Rizki Pratama" readonly>
+                            </div>
+                            <div class="input-group">
+                                <label for="nik">NIK</label>
+                                <input type="text" id="nik" value="3201234567890123" readonly>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label for="tempat-lahir">Tempat Lahir</label>
+                                <input type="text" id="tempat-lahir" value="Jakarta" readonly>
+                            </div>
+                            <div class="input-group">
+                                <label for="tanggal-lahir">Tanggal Lahir</label>
+                                <input type="date" id="tanggal-lahir" value="2000-05-15" readonly>
+                            </div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="alamat">Alamat Lengkap</label>
+                            <textarea id="alamat" rows="3" readonly>Jl. Margonda Raya No. 123, Depok, Jawa Barat 16424</textarea>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" value="ahmad.rizki@ui.ac.id" readonly>
+                            </div>
+                            <div class="input-group">
+                                <label for="telepon">No. Telepon</label>
+                                <input type="tel" id="telepon" value="08123456789" readonly>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions" style="display: none;">
+                            <button type="button" class="btn-secondary" onclick="cancelEdit('personal')">Batal</button>
+                            <button type="button" class="btn-primary" onclick="saveProfile('personal')">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Data Akademik Section -->
+                <div id="academic-section" class="profile-section">
+                    <div class="section-header">
+                        <h2>Data Akademik</h2>
+                        <button class="edit-btn" onclick="toggleEdit('academic')">Edit</button>
+                    </div>
+                    
+                    <form class="profile-form">
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label for="jurusan">Program Studi</label>
+                                <select id="jurusan" disabled>
+                                    <option value="teknik-informatika" selected>Teknik Informatika</option>
+                                    <option value="sistem-informasi">Sistem Informasi</option>
+                                    <option value="teknik-elektro">Teknik Elektro</option>
+                                    <option value="manajemen">Manajemen</option>
+                                    <option value="akuntansi">Akuntansi</option>
+                                    <option value="psikologi">Psikologi</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="asal-sekolah">Asal Sekolah</label>
+                                <input type="text" id="asal-sekolah" value="SMA Negeri 1 Jakarta" readonly>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label for="tahun-lulus">Tahun Lulus</label>
+                                <input type="number" id="tahun-lulus" value="2023" readonly>
+                            </div>
+                            <div class="input-group">
+                                <label for="nilai-un">Nilai UN/ANBK</label>
+                                <input type="number" step="0.01" id="nilai-un" value="85.50" readonly>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label for="prestasi">Prestasi Akademik</label>
+                                <textarea id="prestasi" rows="3" readonly>Juara 1 Olimpiade Matematika Tingkat Provinsi 2022</textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions" style="display: none;">
+                            <button type="button" class="btn-secondary" onclick="cancelEdit('academic')">Batal</button>
+                            <button type="button" class="btn-primary" onclick="saveProfile('academic')">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Dokumen Section -->
+                <div id="documents-section" class="profile-section">
+                    <div class="section-header">
+                        <h2>Dokumen Pendukung</h2>
+                    </div>
+                    
+                    <div class="documents-grid">
+                        <div class="document-item">
+                            <div class="document-icon">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14,2 14,8 20,8"></polyline>
+                                </svg>
+                            </div>
+                            <div class="document-info">
+                                <h4>KTP</h4>
+                                <p class="status uploaded">Sudah diupload</p>
+                                <span class="file-name">ktp_ahmad.pdf</span>
+                            </div>
+                            <div class="document-actions">
+                                <button class="btn-view">Lihat</button>
+                                <button class="btn-upload">Ganti</button>
+                            </div>
+                        </div>
+
+                        <div class="document-item">
+                            <div class="document-icon">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14,2 14,8 20,8"></polyline>
+                                </svg>
+                            </div>
+                            <div class="document-info">
+                                <h4>Ijazah SMA</h4>
+                                <p class="status uploaded">Sudah diupload</p>
+                                <span class="file-name">ijazah_sma.pdf</span>
+                            </div>
+                            <div class="document-actions">
+                                <button class="btn-view">Lihat</button>
+                                <button class="btn-upload">Ganti</button>
+                            </div>
+                        </div>
+
+                        <div class="document-item">
+                            <div class="document-icon">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14,2 14,8 20,8"></polyline>
+                                </svg>
+                            </div>
+                            <div class="document-info">
+                                <h4>Transkrip Nilai</h4>
+                                <p class="status pending">Menunggu upload</p>
+                                <span class="file-name">-</span>
+                            </div>
+                            <div class="document-actions">
+                                <button class="btn-upload">Upload</button>
+                            </div>
+                        </div>
+
+                        <div class="document-item">
+                            <div class="document-icon">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14,2 14,8 20,8"></polyline>
+                                </svg>
+                            </div>
+                            <div class="document-info">
+                                <h4>Foto 3x4</h4>
+                                <p class="status uploaded">Sudah diupload</p>
+                                <span class="file-name">foto_3x4.jpg</span>
+                            </div>
+                            <div class="document-actions">
+                                <button class="btn-view">Lihat</button>
+                                <button class="btn-upload">Ganti</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Keamanan Section -->
+                <div id="security-section" class="profile-section">
+                    <div class="section-header">
+                        <h2>Keamanan Akun</h2>
+                    </div>
+                    
+                    <div class="security-options">
+                        <div class="security-item">
+                            <h4>Ubah Password</h4>
+                            <p>Pastikan akun Anda aman dengan password yang kuat</p>
+                            <button class="btn-secondary" onclick="showPasswordForm()">Ubah Password</button>
+                        </div>
+                        
+                        <div class="security-item">
+                            <h4>Verifikasi Email</h4>
+                            <p>Email Anda telah diverifikasi</p>
+                            <span class="status-badge verified">Terverifikasi</span>
+                        </div>
+                        
+                        <div class="security-item">
+                            <h4>Verifikasi Nomor Telepon</h4>
+                            <p>Nomor telepon Anda telah diverifikasi</p>
+                            <span class="status-badge verified">Terverifikasi</span>
+                        </div>
+                    </div>
+
+                    <div id="password-form" class="password-form" style="display: none;">
+                        <h4>Ubah Password</h4>
+                        <form>
+                            <div class="input-group">
+                                <label for="current-password">Password Saat Ini</label>
+                                <input type="password" id="current-password" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="new-password">Password Baru</label>
+                                <input type="password" id="new-password" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="confirm-new-password">Konfirmasi Password Baru</label>
+                                <input type="password" id="confirm-new-password" required>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn-secondary" onclick="hidePasswordForm()">Batal</button>
+                                <button type="submit" class="btn-primary">Simpan Password</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionName) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.profile-section');
+            sections.forEach(section => section.classList.remove('active'));
+            
+            // Remove active class from all menu items
+            const menuItems = document.querySelectorAll('.menu-item');
+            menuItems.forEach(item => item.classList.remove('active'));
+            
+            // Show selected section
+            document.getElementById(sectionName + '-section').classList.add('active');
+            
+            // Add active class to clicked menu item
+            event.target.classList.add('active');
+        }
+
+        function toggleEdit(section) {
+            const form = document.querySelector(`#${section}-section form`);
+            const inputs = form.querySelectorAll('input, textarea, select');
+            const actions = form.querySelector('.form-actions');
+            const editBtn = document.querySelector(`#${section}-section .edit-btn`);
+            
+            const isCurrentlyReadonly = inputs[0].readOnly || inputs[0].disabled;
+            
+            inputs.forEach(input => {
+                if (input.tagName === 'SELECT') {
+                    input.disabled = !isCurrentlyReadonly;
+                } else {
+                    input.readOnly = !isCurrentlyReadonly;
+                }
+                
+                // Add visual styling for edit mode
+                if (isCurrentlyReadonly) {
+                    input.style.backgroundColor = '#fff';
+                    input.style.border = '2px solid #667eea';
+                } else {
+                    input.style.backgroundColor = '#f8f9fa';
+                    input.style.border = '2px solid #e1e8ed';
+                }
+            });
+            
+            actions.style.display = isCurrentlyReadonly ? 'flex' : 'none';
+            editBtn.textContent = isCurrentlyReadonly ? 'Batal' : 'Edit';
+            
+            // Focus pada input pertama saat mode edit
+            if (isCurrentlyReadonly) {
+                inputs[0].focus();
+            }
+        }
+
+        function cancelEdit(section) {
+            const form = document.querySelector(`#${section}-section form`);
+            const inputs = form.querySelectorAll('input, textarea, select');
+            const actions = form.querySelector('.form-actions');
+            const editBtn = document.querySelector(`#${section}-section .edit-btn`);
+            
+            // Reset ke readonly/disabled
+            inputs.forEach(input => {
+                if (input.tagName === 'SELECT') {
+                    input.disabled = true;
+                } else {
+                    input.readOnly = true;
+                }
+                
+                // Reset visual styling
+                input.style.backgroundColor = '#f8f9fa';
+                input.style.border = '2px solid #e1e8ed';
+            });
+            
+            actions.style.display = 'none';
+            editBtn.textContent = 'Edit';
+            
+            // Reset form values to original if needed
+            // You can add code here to restore original values
+        }
+
+        function saveProfile(section) {
+            // Simulate saving data
+            alert('Data berhasil disimpan!');
+            cancelEdit(section);
+        }
+
+        function showPasswordForm() {
+            document.getElementById('password-form').style.display = 'block';
+        }
+
+        function hidePasswordForm() {
+            document.getElementById('password-form').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
