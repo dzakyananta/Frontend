@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar - Pendaftaran Mahasiswa Baru</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="register-box">
+            <div class="logo">
+                <h1>Politeknik Negeri Lampung</h1>
+                <p>Sistem Pendaftaran Mahasiswa Baru</p>
+            </div>
+            
+            <form class="register-form">
+                <h2>Pendaftaran Mahasiswa Baru</h2>
+                
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="nama-lengkap">Nama Lengkap</label>
+                        <input type="text" id="nama-lengkap" name="nama-lengkap" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="nik">NIK</label>
+                        <input type="text" id="nik" name="nik" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="tempat-lahir">Tempat Lahir</label>
+                        <input type="text" id="tempat-lahir" name="tempat-lahir" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="tanggal-lahir">Tanggal Lahir</label>
+                        <input type="date" id="tanggal-lahir" name="tanggal-lahir" required>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="alamat">Alamat Lengkap</label>
+                    <textarea id="alamat" name="alamat" rows="3" required></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="telepon">No. Telepon</label>
+                        <input type="tel" id="telepon" name="telepon" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="jurusan">Pilihan Jurusan</label>
+                        <select id="jurusan" name="jurusan" required>
+                            <option value="">Pilih Jurusan</option>
+                            <option value="teknik-informatika">Teknik Informatika</option>
+                            <option value="sistem-informasi">Sistem Informasi</option>
+                            <option value="teknik-elektro">Teknik Elektro</option>
+                            <option value="manajemen">Manajemen</option>
+                            <option value="akuntansi">Akuntansi</option>
+                            <option value="psikologi">Psikologi</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="asal-sekolah">Asal Sekolah</label>
+                        <input type="text" id="asal-sekolah" name="asal-sekolah" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="confirm-password">Konfirmasi Password</label>
+                        <input type="password" id="confirm-password" name="confirm-password" required>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-primary" onclick="register()">Daftar</button>
+                
+                <div class="form-footer">
+                    <p>Sudah punya akun? <a href="index.html">Login di sini</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function register() {
+            alert('Pendaftaran berhasil! Silakan login dengan akun Anda.');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
